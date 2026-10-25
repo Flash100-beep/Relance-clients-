@@ -50,7 +50,23 @@ button.ok{background:var(--ok);width:auto;padding:6px 10px}
       <option value="facture_a_payer">Facture à payer</option>
       <option value="paye">Payé</option>
     </select>
-    <input id="montant" type="number" step="0.01" placeholder="Montant en €">
+    <input id="montant" type="number" step="any" placeholder="Montant">
+    <select id="devise">
+      <option value="EUR">€ Euro (EUR)</option>
+      <option value="XOF">FCFA Afrique de l'Ouest (XOF)</option>
+      <option value="XAF">FCFA Afrique centrale (XAF)</option>
+      <option value="USD">$ Dollar US (USD)</option>
+      <option value="CAD">$ Dollar canadien (CAD)</option>
+      <option value="GBP">£ Livre sterling (GBP)</option>
+      <option value="CHF">CHF Franc suisse</option>
+      <option value="MAD">MAD Dirham marocain</option>
+      <option value="TND">TND Dinar tunisien</option>
+      <option value="DZD">DZD Dinar algérien</option>
+      <option value="GNF">GNF Franc guinéen</option>
+      <option value="CDF">CDF Franc congolais</option>
+      <option value="NGN">₦ Naira (NGN)</option>
+      <option value="GHS">GHS Cedi ghanéen</option>
+    </select>
     <label class="m">Date de relance</label>
     <input id="date" type="date">
     <textarea id="notes" rows="2" placeholder="Notes"></textarea>
@@ -58,6 +74,7 @@ button.ok{background:var(--ok);width:auto;padding:6px 10px}
   </div>
 
   <h2>👥 Tous les clients</h2>
+  <div id="tot" class="card hide"></div>
   <div id="all"></div>
 </div>
 
@@ -84,12 +101,17 @@ $("login").onclick = () => creds(c => sb.auth.signInWithPassword(c));
 $("signup").onclick = () => creds(c => sb.auth.signUp(c));
 $("logout").onclick = () => sb.auth.signOut();
 
+function fmt(n, cur){
+  try { return new Intl.NumberFormat("fr-FR", {style:"currency", currency:cur || "EUR"}).format(n); }
+  catch(e){ return n + " " + cur; }
+}
+
 function card(c){
   const d = document.createElement("div"); d.className = "card";
   const t = document.createElement("strong"); t.textContent = c.nom; d.appendChild(t);
   const info = document.createElement("div"); info.className = "m";
   const parts = [LABELS[c.statut]];
-  if(c.montant != null) parts.push(c.montant + " €");
+  if(c.montant != null) parts.push(fmt(c.montant, c.devise));
   if(c.telephone) parts.push(c.telephone);
   if(c.email) parts.push(c.email);
   info.textContent = parts.join(" · "); d.appendChild(info);
@@ -125,6 +147,12 @@ async function load(){
   if(!due.length){ const p = document.createElement("p"); p.className = "m"; p.textContent = "Rien à relancer aujourd'hui 🎉"; $("due").appendChild(p); }
   due.forEach(c => $("due").appendChild(card(c)));
   data.forEach(c => $("all").appendChild(card(c)));
+  const sums = {};
+  data.filter(c => c.statut !== "paye" && c.montant != null)
+      .forEach(c => { const k = c.devise || "EUR"; sums[k] = (sums[k] || 0) + Number(c.montant); });
+  const keys = Object.keys(sums);
+  $("tot").classList.toggle("hide", !keys.length);
+  $("tot").textContent = keys.length ? "💰 À encaisser : " + keys.map(k => fmt(sums[k], k)).join("  +  ") : "";
 }
 
 $("add").onclick = async () => {
@@ -132,7 +160,7 @@ $("add").onclick = async () => {
   if(!nom) return alert("Le nom est obligatoire.");
   const {error} = await sb.from("clients").insert({
     nom, email: $("cemail").value.trim() || null, telephone: $("tel").value.trim() || null,
-    statut: $("statut").value, montant: $("montant").value || null,
+    statut: $("statut").value, montant: $("montant").value || null, devise: $("devise").value,
     date_relance: $("date").value || null, notes: $("notes").value.trim() || null
   });
   if(error) return alert(error.message);
