@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Relance Clients</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<style>
+:root{--bg:#f6f7f9;--card:#fff;--tx:#1b1f24;--mu:#6b7280;--ac:#2563eb;--bd:#e5e7eb;--ok:#16a34a;--ko:#dc2626}
+@media(prefers-color-scheme:dark){:root{--bg:#111418;--card:#1b2027;--tx:#f1f3f5;--mu:#9aa3af;--bd:#2d343d}}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,sans-serif;background:var(--bg);color:var(--tx);padding:16px;max-width:560px;margin:auto}
+h1{font-size:1.3rem}h2{font-size:1.05rem;margin:20px 0 8px}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:14px;margin-bottom:10px}
+input,select,textarea,button{font:inherit;width:100%;padding:11px;margin:4px 0;border-radius:8px;border:1px solid var(--bd);background:var(--card);color:var(--tx)}
+button{background:var(--ac);color:#fff;border:0;cursor:pointer;font-weight:600}
+button.s{background:transparent;color:var(--mu);border:1px solid var(--bd);width:auto;padding:6px 10px;font-weight:400}
+button.ok{background:var(--ok);width:auto;padding:6px 10px}
+.row{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.m{color:var(--mu);font-size:.85rem}.late{color:var(--ko);font-weight:600}
+.top{display:flex;justify-content:space-between;align-items:center}.top button{width:auto}
+#msg{color:var(--ko);min-height:1.2em;font-size:.9rem}
+.hide{display:none}
+</style>
+</head>
+<body>
+<h1>📋 Relance Clients</h1>
+
+<div id="auth" class="card">
+  <input id="email" type="email" placeholder="Email" autocomplete="email">
+  <input id="pass" type="password" placeholder="Mot de passe (6 caractères min.)" autocomplete="current-password">
+  <button id="login">Se connecter</button>
+  <button id="signup" class="s" style="width:100%">Créer un compte</button>
+  <div id="msg"></div>
+</div>
+
+<div id="app" class="hide">
+  <div class="top"><span class="m" id="who"></span><button class="s" id="logout">Déconnexion</button></div>
+
+  <h2>🔔 À relancer aujourd'hui</h2>
+  <div id="due"></div>
+
+  <h2>➕ Nouveau client</h2>
+  <div class="card">
+    <input id="nom" placeholder="Nom du client">
+    <input id="cemail" type="email" placeholder="Email (optionnel)">
+    <input id="tel" type="tel" placeholder="Téléphone (optionnel)">
+    <select id="statut">
+      <option value="devis_envoye">Devis envoyé</option>
+      <option value="facture_a_payer">Facture à payer</option>
+      <option value="paye">Payé</option>
+    </select>
+    <input id="montant" type="number" step="0.01" placeholder="Montant en €">
+    <label class="m">Date de relance</label>
+    <input id="date" type="date">
+    <textarea id="notes" rows="2" placeholder="Notes"></textarea>
+    <button id="add">Ajouter</button>
+  </div>
+
+  <h2>👥 Tous les clients</h2>
+  <div id="all"></div>
+</div>
+
+<script>
+const sb = supabase.createClient(
+  "https://ehesotolrzzfoytpfwvt.supabase.co",
+  "sb_publishable_OGiTHNfapGV0sy--EXw7Rg_7SPpVpxb"
+);
+const $ = id => document.getElementById(id);
+const LABELS = {devis_envoye:"Devis envoyé", facture_a_payer:"Facture à payer", paye:"Payé"};
+const today = () => new Date().toISOString().slice(0,10);
+
+function say(t){ $("msg").textContent = t || ""; }
+
+async function creds(fn){
+  say("");
+  const email = $("email").value.trim(), password = $("pass").value;
+  if(!email || password.length < 6) return say("Email et mot de passe (6 caractères min.) requis.");
+  const {data, error} = await fn({email, password});
+  if(error) return say(error.message);
+  if(!data.session) say("Compte créé. Vérifie ta boîte mail pour confirmer, puis connecte-toi.");
+}
+$("login").onclick = () => creds(c => sb.auth.signInWithPassword(c));
+$("signup").onclick = () => creds(c => sb.auth.signUp(c));
+$("logout").onclick = () => sb.auth.signOut();
+
+function card(c){
+  const d = document.createElement("div"); d.className = "card";
+  const t = document.createElement("strong"); t.textContent = c.nom; d.appendChild(t);
+  const info = document.createElement("div"); info.className = "m";
+  const parts = [LABELS[c.statut]];
+  if(c.montant != null) parts.push(c.montant + " €");
+  if(c.telephone) parts.push(c.telephone);
+  if(c.email) parts.push(c.email);
+  info.textContent = parts.join(" · "); d.appendChild(info);
+  if(c.date_relance){
+    const r = document.createElement("div");
+    r.className = "m" + (c.date_relance < today() && c.statut !== "paye" ? " late" : "");
+    r.textContent = "Relance : " + c.date_relance; d.appendChild(r);
+  }
+  if(c.notes){ const n = document.createElement("div"); n.className = "m"; n.textContent = c.notes; d.appendChild(n); }
+  const row = document.createElement("div"); row.className = "row";
+  if(c.statut !== "paye"){
+    const b = document.createElement("button"); b.className = "ok"; b.textContent = "✓ Payé";
+    b.onclick = async () => { await sb.from("clients").update({statut:"paye", date_relance:null}).eq("id", c.id); load(); };
+    row.appendChild(b);
+    const w = document.createElement("button"); w.className = "s"; w.textContent = "Relancé +3 j";
+    w.onclick = async () => {
+      const x = new Date(); x.setDate(x.getDate() + 3);
+      await sb.from("clients").update({date_relance: x.toISOString().slice(0,10)}).eq("id", c.id); load();
+    };
+    row.appendChild(w);
+  }
+  const del = document.createElement("button"); del.className = "s"; del.textContent = "Supprimer";
+  del.onclick = async () => { if(confirm("Supprimer " + c.nom + " ?")){ await sb.from("clients").delete().eq("id", c.id); load(); } };
+  row.appendChild(del); d.appendChild(row);
+  return d;
+}
+
+async function load(){
+  const {data, error} = await sb.from("clients").select("*").order("date_relance", {ascending:true, nullsFirst:false});
+  if(error){ $("all").textContent = error.message; return; }
+  $("due").replaceChildren(); $("all").replaceChildren();
+  const due = data.filter(c => c.statut !== "paye" && c.date_relance && c.date_relance <= today());
+  if(!due.length){ const p = document.createElement("p"); p.className = "m"; p.textContent = "Rien à relancer aujourd'hui 🎉"; $("due").appendChild(p); }
+  due.forEach(c => $("due").appendChild(card(c)));
+  data.forEach(c => $("all").appendChild(card(c)));
+}
+
+$("add").onclick = async () => {
+  const nom = $("nom").value.trim();
+  if(!nom) return alert("Le nom est obligatoire.");
+  const {error} = await sb.from("clients").insert({
+    nom, email: $("cemail").value.trim() || null, telephone: $("tel").value.trim() || null,
+    statut: $("statut").value, montant: $("montant").value || null,
+    date_relance: $("date").value || null, notes: $("notes").value.trim() || null
+  });
+  if(error) return alert(error.message);
+  ["nom","cemail","tel","montant","date","notes"].forEach(i => $(i).value = "");
+  load();
+};
+
+function show(session){
+  $("auth").classList.toggle("hide", !!session);
+  $("app").classList.toggle("hide", !session);
+  if(session){ $("who").textContent = session.user.email; load(); }
+}
+sb.auth.onAuthStateChange((_e, s) => show(s));
+sb.auth.getSession().then(({data}) => show(data.session));
+</script>
+</body>
+</html>
