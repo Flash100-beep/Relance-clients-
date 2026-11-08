@@ -3,6 +3,8 @@
 > Statut : **document de conception, en attente de validation.**
 > Aucune ligne de code applicatif n'a été écrite. Rien n'est déployé.
 > Date : 2026-11-07 · Branche : `arena/9609d122-relance-clients`
+>
+> 📎 **Document compagnon** : `docs/00-exigences-conformite.md` — matrice qui relie chacune de tes exigences obligatoires à un livrable, une phase et une méthode de vérification. Trois points de ce document ont été corrigés suite à ces exigences (voir §11 de la matrice : A1 stockage R2 par défaut, A2 tests responsive/performance obligatoires, A3 essai gratuit et remboursements explicités).
 
 ---
 
@@ -130,7 +132,7 @@ Ce résultat valide la méthode de la phase 3 : **chaque migration sera réellem
 | Accès données | **`@supabase/ssr` côté serveur** | La clé `service_role` ne quitte jamais le serveur ; le client navigateur ne parle qu'avec la clé publable + RLS |
 | Logique métier | **`lib/domain/*`, pur TypeScript** | Le calcul de commission et l'attribution sont unit-testables sans base ni réseau — c'est là que se joue la fiabilité financière |
 | Tracking | **Route Handler `GET /r/[code]`** | Un seul point d'entrée, journalisation puis redirection 302, écriture du clic asynchrone pour ne pas ralentir la redirection |
-| Stockage | **Cloudflare R2** (S3-compatible, **0 $ d'egress**) | Les logos, justificatifs et factures PDF coûtent cher en sortie chez les autres. Alternative sans configuration : Supabase Storage (100 Go inclus en Pro, puis 0,0213 $/Go, egress 0,09 $/Go) |
+| Stockage | **Cloudflare R2 par défaut** (exigence du cahier des charges) — S3-compatible, **egress 0 $** | Offert : 10 Go + 1 M écritures + 10 M lectures/mois ; puis 0,015 $/Go-mois. Les logos, justificatifs et factures PDF coûtent cher en sortie ailleurs. **Repli** via l'adaptateur : Supabase Storage (100 Go inclus en Pro, puis 0,0213 $/Go, egress 0,09 $/Go) — utile si tu ne veux pas ouvrir de compte Cloudflare |
 | Paiements | **Architecture à adaptateurs** (`PaymentProvider`) | Aucun verrouillage fournisseur. Stripe pour les abonnements SaaS ; adaptateurs Mobile Money activables quand un compte marchand réel existe |
 | IA | **Interface `AiProvider` + 3 adaptateurs** | OpenAI, Anthropic, Mistral interchangeables ; routage par coût ; coupe-circuit budgétaire |
 | Tests | **Vitest** + harnais **PGlite** | Unitaires sur le domaine ; intégration SQL et RLS sur un vrai PostgreSQL 18.6 exécuté localement |
@@ -217,7 +219,7 @@ Relance-clients-/                      # (renommage éventuel → voir D2)
 │     │  └─ middleware.ts              # locale + garde d'authentification + rôles
 │     └─ tests/
 │        ├─ integration/              # migrations + RLS sur PGlite
-│        └─ e2e/                      # Playwright (optionnel, phase 9)
+│        └─ e2e/                      # Playwright multi-viewport (OBLIGATOIRE, phase 9)
 ├─ supabase/
 │  ├─ migrations/                     # 0001_init.sql, 0002_rls.sql, … numérotées
 │  ├─ seed/                           # données de DÉMONSTRATION explicitement étiquetées
@@ -356,9 +358,9 @@ Conventions : `uuid` par défaut (`gen_random_uuid()`), `created_at`/`updated_at
 
 | Table | Rôle | Colonnes clés |
 |---|---|---|
-| `plans` | Offres modifiables depuis l'admin | `code`, `audience` ∈ {affiliate, advertiser}, `price_minor`, `currency`, `interval` ∈ {month, year}, `limits jsonb` (max_links, ai_credits, max_programs), `features jsonb`, `is_active` |
+| `plans` | Offres modifiables depuis l'admin | `code`, `audience` ∈ {affiliate, advertiser}, `price_minor`, `currency`, `interval` ∈ {month, year}, `trial_days`, `limits jsonb` (max_links, ai_credits, max_programs), `features jsonb`, `is_active` |
 | `subscriptions` | Abonnements | `subscriber_type`, `subscriber_id`, `plan_id`, `status` ∈ {trialing, active, past_due, canceled, unpaid}, `provider`, `provider_subscription_id`, `current_period_start/end`, `cancel_at_period_end` |
-| `invoices` | Factures | `number` UNIQUE, `subscription_id`, `amount_minor`, `status`, `issued_at`, `paid_at`, `provider_invoice_id`, `pdf_url` |
+| `invoices` | Factures | `number` UNIQUE, `subscription_id`, `amount_minor`, `status` ∈ {draft, open, paid, **refunded**, void, uncollectible}, `issued_at`, `paid_at`, `provider_invoice_id`, `pdf_url`. Un remboursement = **contre-écriture** dans `ledger_entries` (`ref_type = 'refund'`), jamais une suppression |
 
 ### 5.7 Exploitation
 
