@@ -1,0 +1,538 @@
+{
+  "meta": {
+    "siteName": "AffiliateOS",
+    "defaultDescription": "AffiliateOS est la plateforme SaaS qui permet aux annonceurs de lancer leur programme d'affiliation et aux affiliés de suivre chaque clic, chaque conversion et chaque commission."
+  },
+  "nav": {
+    "features": "Fonctionnalités",
+    "pricing": "Tarifs",
+    "affiliates": "Affiliés",
+    "advertisers": "Annonceurs",
+    "howItWorks": "Comment ça marche",
+    "help": "Aide",
+    "login": "Connexion",
+    "signup": "Commencer",
+    "openMenu": "Ouvrir le menu",
+    "closeMenu": "Fermer le menu",
+    "toggleTheme": "Changer de thème",
+    "switchLanguage": "Changer de langue"
+  },
+  "common": {
+    "ctaStart": "Créer un compte gratuit",
+    "ctaContact": "Parler à l'équipe",
+    "ctaPricing": "Voir les tarifs",
+    "ctaFeatures": "Découvrir les fonctionnalités",
+    "ctaLogin": "Se connecter",
+    "learnMore": "En savoir plus",
+    "demoData": "Aperçu de l'interface — données de démonstration, non contractuelles",
+    "perMonth": "/mois",
+    "custom": "Sur mesure",
+    "monthly": "Mensuel",
+    "annual": "Annuel",
+    "annualSave": "2 mois offerts",
+    "popular": "Le plus choisi",
+    "billingCurrencyNote": "Facturation en USD. L'affichage en EUR et en FCFA sera disponible dès la configuration d'un taux de change réel — AffiliateOS n'invente aucun taux.",
+    "pricingDisclaimer": "Tarifs indicatifs, susceptibles d'évoluer. Ils sont stockés en base de données et modifiables depuis l'administration sans redéploiement.",
+    "lightTheme": "Clair",
+    "darkTheme": "Sombre",
+    "roadmapLabel": "Feuille de route",
+    "availableLabel": "Au lancement",
+    "errorTitle": "Une erreur est survenue",
+    "notFoundTitle": "Page introuvable",
+    "notFoundBody": "La page que vous cherchez n'existe pas ou a été déplacée.",
+    "backHome": "Retour à l'accueil"
+  },
+  "footer": {
+    "tagline": "La plateforme de gestion, d'analyse et d'optimisation du marketing d'affiliation.",
+    "product": "Produit",
+    "solutions": "Solutions",
+    "resources": "Ressources",
+    "legal": "Mentions légales",
+    "terms": "Conditions générales",
+    "privacy": "Politique de confidentialité",
+    "cookies": "Politique de cookies",
+    "about": "À propos",
+    "helpCenter": "Centre d'aide",
+    "contact": "Contact",
+    "rights": "Tous droits réservés.",
+    "statusNote": "Projet en cours de développement. Aucune donnée de production n'est encore traitée."
+  },
+  "home": {
+    "heroBadge": "Programmes d'affiliation, tracking et commissions",
+    "heroTitle": "Lancez votre programme d'affiliation et suivez chaque commission",
+    "heroSubtitle": "AffiliateOS réunit annonceurs et affiliés sur une même plateforme : liens personnalisés, tracking fiable, calcul automatique des commissions et tableaux de bord lisibles sur mobile comme sur ordinateur.",
+    "heroNote": "Inscription gratuite. Aucune carte bancaire requise pour démarrer.",
+    "previewTitle": "Tableau de bord affilié",
+    "previewClicks": "Clics",
+    "previewConversions": "Conversions",
+    "previewRate": "Taux de conversion",
+    "previewCommissions": "Commissions validées",
+    "previewChartTitle": "Clics et conversions — 14 derniers jours",
+    "previewSeriesClicks": "Clics",
+    "previewSeriesConversions": "Conversions",
+    "valueTitle": "Pourquoi AffiliateOS",
+    "valueSubtitle": "Trois principes qui distinguent la plateforme d'un simple tableau de liens.",
+    "value1Title": "Un tracking qui tient la charge",
+    "value1Body": "Chaque lien porte un identifiant unique. Chaque clic est horodaté, rattaché à son affilié, son programme et sa campagne, puis attribué selon une fenêtre de cookie définie par l'annonceur.",
+    "value2Title": "Une commission n'est jamais devinée",
+    "value2Body": "Un clic n'est jamais compté comme une vente. Les conversions passent par une validation, les doublons sont bloqués par identifiant unique, et les montants sont stockés en unités entières : aucun arrondi flottant.",
+    "value3Title": "Pensé pour l'Afrique et l'international",
+    "value3Body": "Interface en français et en anglais, devise FCFA, EUR ou USD, moyens de retrait configurables par pays. Une architecture pensée pour les connexions mobiles contraintes.",
+    "personasTitle": "Une plateforme, deux métiers",
+    "personasSubtitle": "Chaque utilisateur dispose d'un espace conçu pour son rôle.",
+    "affiliateTitle": "Pour les affiliés",
+    "affiliateBody": "Trouvez des programmes, obtenez vos liens, suivez vos performances et demandez vos paiements.",
+    "advertiserTitle": "Pour les annonceurs",
+    "advertiserBody": "Créez votre programme, fixez vos commissions, recrutez des affiliés et gardez la main sur la validation.",
+    "stepsTitle": "Comment ça marche",
+    "stepsSubtitle": "Trois étapes, de la création du programme au paiement de l'affilié.",
+    "ctaTitle": "Prêt à lancer votre programme d'affiliation ?",
+    "ctaSubtitle": "Créez un compte gratuit, configurez votre premier programme et générez vos premiers liens en quelques minutes.",
+    "faqTitle": "Questions fréquentes",
+    "faqSubtitle": "Les réponses aux questions que l'on nous pose le plus souvent."
+  },
+  "features": {
+    "title": "Fonctionnalités",
+    "subtitle": "Tout ce dont vous avez besoin pour piloter un programme d'affiliation, de la génération du lien au paiement de la commission.",
+    "trackingTitle": "Tracking et attribution",
+    "trackingBody": "Des liens courts et uniques, un enregistrement de clic complet et une attribution documentée.",
+    "commissionsTitle": "Commissions",
+    "commissionsBody": "Cinq modèles de rémunération et un cycle de validation explicite avant tout paiement.",
+    "paymentsTitle": "Paiements et retraits",
+    "paymentsBody": "Une architecture de paiement indépendante du fournisseur, avec solde, seuil et historique.",
+    "aiTitle": "AffiliateOS AI",
+    "aiBody": "Un assistant, un générateur de contenus marketing et une analyse de vos performances.",
+    "adminTitle": "Administration et contrôle",
+    "adminBody": "Modération des programmes, gestion des utilisateurs, finances et journal d'audit.",
+    "apiTitle": "API publique et webhooks",
+    "apiBody": "Intégrez AffiliateOS à votre boutique ou à votre outil métier, avec des clés à périmètre limité.",
+    "securityTitle": "Sécurité et conformité",
+    "securityBody": "Isolation des données par entreprise, validation côté serveur et aucune donnée bancaire stockée.",
+    "tracking": [
+      {
+        "title": "Liens personnalisés",
+        "body": "Un identifiant unique par lien, rattaché à l'affilié, au programme, au produit et à la campagne."
+      },
+      {
+        "title": "Paramètres UTM",
+        "body": "Ajoutez vos UTM, créez plusieurs liens pour un même produit et comparez leurs performances."
+      },
+      {
+        "title": "Codes promotionnels",
+        "body": "Attribuez des codes promo lorsque l'annonceur l'autorise, utiles pour l'audio et les réseaux sociaux."
+      },
+      {
+        "title": "Fenêtre de cookie configurable",
+        "body": "L'annonceur définit la durée d'attribution, en jours, pour chaque programme."
+      }
+    ],
+    "commissions": [
+      {
+        "title": "Commission fixe",
+        "body": "Un montant défini par conversion, quelle que soit la valeur du panier."
+      },
+      {
+        "title": "Commission en pourcentage",
+        "body": "Un taux appliqué au montant de la vente, net de taxes et de frais de port."
+      },
+      {
+        "title": "Commission récurrente",
+        "body": "Une rémunération sur plusieurs périodes pour les abonnements."
+      },
+      {
+        "title": "Par prospect ou par action",
+        "body": "Rémunérez une inscription, un devis demandé ou toute action mesurable."
+      },
+      {
+        "title": "Cycle de validation",
+        "body": "En attente, validée, refusée, disponible, payée, annulée. Aucun statut n'est franchi sans règle."
+      },
+      {
+        "title": "Anti-doublon",
+        "body": "Chaque conversion porte une référence unique par programme : un webhook rejoué ne paie pas deux fois."
+      }
+    ],
+    "payments": [
+      {
+        "title": "Solde en temps réel",
+        "body": "Solde disponible, commissions en attente et historique, issus d'un registre comptable."
+      },
+      {
+        "title": "Seuil de retrait",
+        "body": "Un montant minimum configurable, par programme et par devise."
+      },
+      {
+        "title": "Moyens configurables par pays",
+        "body": "Mobile Money, virement bancaire ou prestataire international, activés pays par pays."
+      },
+      {
+        "title": "Justificatifs",
+        "body": "Chaque paiement conserve sa référence et son justificatif téléchargeable."
+      }
+    ],
+    "ai": [
+      {
+        "title": "Assistant",
+        "body": "Trouvez des programmes adaptés, comprenez leurs conditions et identifiez les offres intéressantes."
+      },
+      {
+        "title": "Générateur marketing",
+        "body": "Textes publicitaires, e-mails, publications sociales, scripts courts et titres accrocheurs."
+      },
+      {
+        "title": "Analyse de performances",
+        "body": "Détection des baisses de conversion et suggestions d'amélioration, campagne par campagne."
+      },
+      {
+        "title": "Multi-fournisseurs",
+        "body": "OpenAI, Anthropic ou Mistral, avec des quotas par abonnement et un plafond de dépense."
+      }
+    ],
+    "admin": [
+      {
+        "title": "Modération des programmes",
+        "body": "Un programme peut exiger une validation administrative avant publication."
+      },
+      {
+        "title": "Gestion des comptes",
+        "body": "Recherche, vérification des annonceurs et suspension, tracées dans un journal d'audit."
+      },
+      {
+        "title": "Supervision financière",
+        "body": "Transactions, commissions, abonnements et demandes de paiement centralisés."
+      },
+      {
+        "title": "Paramètres de la plateforme",
+        "body": "Tarifs, seuils de retrait et règles de modération modifiables sans redéploiement."
+      }
+    ],
+    "api": [
+      {
+        "title": "REST versionnée",
+        "body": "Une API documentée sous /api/v1, avec pagination et codes d'erreur explicites."
+      },
+      {
+        "title": "Clés à périmètre limité",
+        "body": "Des clés API hachées, dotées de permissions précises, révocables à tout moment."
+      },
+      {
+        "title": "Webhooks signés",
+        "body": "Recevez vos événements et vérifiez leur signature HMAC avant de les traiter."
+      },
+      {
+        "title": "Environnement de test",
+        "body": "Un mode bac à sable séparé de la production, pour intégrer sans risque."
+      }
+    ],
+    "security": [
+      {
+        "title": "Isolation par entreprise",
+        "body": "Les politiques de sécurité au niveau de la base garantissent qu'une entreprise ne lit jamais les données d'une autre."
+      },
+      {
+        "title": "Validation côté serveur",
+        "body": "Aucune donnée n'atteint la base sans avoir passé un schéma de validation."
+      },
+      {
+        "title": "Aucune donnée bancaire stockée",
+        "body": "Jamais de numéro de carte complet ni de cryptogramme : uniquement des références de prestataire."
+      },
+      {
+        "title": "Journal d'audit",
+        "body": "Chaque action sensible est tracée : acteur, action, entité, avant et après."
+      }
+    ],
+    "roadmapTitle": "Ce qui est prévu, clairement annoncé",
+    "roadmapBody": "AffiliateOS n'annonce pas ce qu'il ne livre pas. Voici l'état réel du périmètre.",
+    "roadmapAvailable": [
+      "Liens personnalisés et paramètres UTM",
+      "Tracking des clics et attribution",
+      "Conversions par API, webhook signé et saisie manuelle",
+      "Calcul et validation des commissions",
+      "Tableaux de bord affilié, annonceur et administration",
+      "API publique et webhooks sortants"
+    ],
+    "roadmapPlanned": [
+      "Connecteurs e-commerce natifs (boutiques en ligne)",
+      "Décaissement automatique vers les portefeuilles Mobile Money",
+      "Application mobile native",
+      "Facturation de la TVA multi-pays"
+    ]
+  },
+  "pricing": {
+    "title": "Tarifs",
+    "subtitle": "Des offres distinctes pour les affiliés et pour les annonceurs. Sans engagement, résiliable à tout moment.",
+    "affiliatesTab": "Affiliés",
+    "advertisersTab": "Annonceurs",
+    "included": "Ce qui est inclus",
+    "affiliateFreeName": "Free",
+    "affiliateFreeF1": "Jusqu'à 5 liens actifs",
+    "affiliateFreeF2": "Statistiques essentielles sur 30 jours",
+    "affiliateFreeF3": "Candidatures illimitées aux programmes",
+    "affiliateProName": "Pro",
+    "affiliateProF1": "Jusqu'à 50 liens actifs",
+    "affiliateProF2": "Analyses avancées et historique complet",
+    "affiliateProF3": "Codes promotionnels",
+    "affiliateProF4": "Outils AffiliateOS AI avec quota mensuel",
+    "affiliatePremiumName": "Premium",
+    "affiliatePremiumF1": "Liens actifs illimités",
+    "affiliatePremiumF2": "Analyses approfondies et exports",
+    "affiliatePremiumF3": "Automatisations et webhooks personnels",
+    "affiliatePremiumF4": "Quota AffiliateOS AI étendu",
+    "advertiserStarterName": "Starter",
+    "advertiserStarterF1": "1 programme d'affiliation",
+    "advertiserStarterF2": "Jusqu'à 25 affiliés actifs",
+    "advertiserStarterF3": "Suivi des clics et des conversions",
+    "advertiserBusinessName": "Business",
+    "advertiserBusinessF1": "Jusqu'à 5 programmes",
+    "advertiserBusinessF2": "Affiliés actifs illimités",
+    "advertiserBusinessF3": "API publique et webhooks",
+    "advertiserBusinessF4": "Rapports exportables",
+    "advertiserEnterpriseName": "Enterprise",
+    "advertiserEnterpriseF1": "Programmes et volumes illimités",
+    "advertiserEnterpriseF2": "Hébergement et conformité sur mesure",
+    "advertiserEnterpriseF3": "Accompagnement et support dédié",
+    "faqTitle": "Questions sur les tarifs",
+    "compareTitle": "Ce que tous les plans incluent",
+    "compareBody": "Le socle de la plateforme n'est pas réservé aux offres payantes.",
+    "compareItems": [
+      "Interface en français et en anglais",
+      "Thème clair et thème sombre",
+      "Tableaux de bord adaptés aux mobiles",
+      "Sécurité et isolation des données",
+      "Centre de notifications"
+    ]
+  },
+  "affiliates": {
+    "title": "Solutions pour les affiliés",
+    "subtitle": "Trouvez des offres pertinentes, promouvez-les avec des liens qui vous appartiennent, et suivez exactement ce que vous gagnez.",
+    "benefit1Title": "Des programmes filtrables",
+    "benefit1Body": "Recherchez par catégorie, par pays et par taux de commission. Les conditions sont affichées avant la candidature, pas après.",
+    "benefit2Title": "Des liens qui vous appartiennent",
+    "benefit2Body": "Créez autant de liens que votre abonnement le permet, avec vos UTM, pour comparer vos canaux entre eux.",
+    "benefit3Title": "Des statistiques honnêtes",
+    "benefit3Body": "Clics, conversions, taux de conversion et commissions, avec un filtre par période. Les chiffres proviennent de la base de données, pas d'une estimation.",
+    "benefit4Title": "Des paiements suivis",
+    "benefit4Body": "Solde disponible, seuil de retrait, demande de paiement et justificatif. Vous savez toujours où en est votre argent.",
+    "ctaTitle": "Commencez gratuitement",
+    "ctaBody": "Le plan Free suffit pour tester la plateforme et rejoindre vos premiers programmes."
+  },
+  "advertisers": {
+    "title": "Solutions pour les annonceurs",
+    "subtitle": "Créez un programme d'affiliation maîtrisé : vous fixez les règles, vous validez les affiliés, vous gardez la main sur chaque commission.",
+    "benefit1Title": "Un programme à vos conditions",
+    "benefit1Body": "Taux de commission par produit, pays ciblés, durée de cookie, éligibilité des affiliés. Vous décidez, la plateforme applique.",
+    "benefit2Title": "Un recrutement maîtrisé",
+    "benefit2Body": "Acceptez ou refusez chaque candidature, ou automatisez l'acceptation si votre programme s'y prête.",
+    "benefit3Title": "Une validation avant paiement",
+    "benefit3Body": "Aucune commission n'est payable avant votre validation. Les remboursements annulent la commission correspondante.",
+    "benefit4Title": "Des rapports exploitables",
+    "benefit4Body": "Clics, conversions, coût par acquisition et performance par affilié, par produit et par campagne.",
+    "ctaTitle": "Lancez votre programme",
+    "ctaBody": "Le plan Starter permet de créer votre premier programme et de recruter vos premiers affiliés."
+  },
+  "howItWorks": {
+    "title": "Comment ça marche",
+    "subtitle": "Le parcours complet, de la création du programme au versement de la commission.",
+    "advertiserTrackTitle": "Parcours annonceur",
+    "affiliateTrackTitle": "Parcours affilié",
+    "advertiserSteps": [
+      {
+        "title": "Créez votre programme",
+        "body": "Nommez votre programme, décrivez vos conditions, choisissez les pays ciblés et la durée du cookie d'attribution."
+      },
+      {
+        "title": "Ajoutez vos produits et vos taux",
+        "body": "Chaque produit ou service porte son propre modèle de commission : fixe, pourcentage, récurrente, par prospect ou par action."
+      },
+      {
+        "title": "Validez vos affiliés",
+        "body": "Examinez les candidatures et acceptez celles qui correspondent à votre marque."
+      },
+      {
+        "title": "Validez les conversions",
+        "body": "Contrôlez les conversions déclarées avant que les commissions ne deviennent payables."
+      },
+      {
+        "title": "Réglez les commissions",
+        "body": "Déclenchez les paiements par tranche et conservez les justificatifs."
+      }
+    ],
+    "affiliateSteps": [
+      {
+        "title": "Créez votre compte affilié",
+        "body": "Inscription par e-mail, choix du rôle, vérification de l'adresse."
+      },
+      {
+        "title": "Choisissez vos programmes",
+        "body": "Filtrez par catégorie et par pays, consultez les commissions et les conditions, puis candidatez."
+      },
+      {
+        "title": "Générez vos liens",
+        "body": "Obtenez un lien court et unique, ajoutez vos UTM, copiez et diffusez."
+      },
+      {
+        "title": "Suivez vos résultats",
+        "body": "Clics, conversions et commissions dans un tableau de bord lisible sur mobile."
+      },
+      {
+        "title": "Demandez vos paiements",
+        "body": "Dès le seuil atteint, demandez un retrait et suivez son statut."
+      }
+    ],
+    "trackingTitle": "Ce qui se passe quand quelqu'un clique sur un lien",
+    "trackingBody": "La transparence du tracking est ce qui rend un programme crédible auprès des affiliés.",
+    "trackingSteps": [
+      "Le lien est identifié : affilié, programme, produit, campagne et paramètres UTM.",
+      "Le clic est enregistré avec un horodatage et une empreinte de visiteur hachée — jamais une adresse IP en clair.",
+      "Les règles de consentement et de confidentialité de l'annonceur sont appliquées.",
+      "Le visiteur est redirigé vers la destination autorisée.",
+      "Une conversion ultérieure est rattachée au clic selon la fenêtre d'attribution, puis attend sa validation."
+    ]
+  },
+  "about": {
+    "title": "À propos d'AffiliateOS",
+    "intro": "AffiliateOS est une plateforme SaaS de gestion, d'analyse et d'optimisation du marketing d'affiliation. Elle s'adresse aux entreprises qui veulent lancer leur propre programme et aux affiliés qui cherchent des offres sérieuses à promouvoir.",
+    "missionTitle": "Notre mission",
+    "missionBody": "Rendre le marketing d'affiliation fiable et lisible. Trop de programmes reposent sur des tableaux de bord approximatifs, des commissions contestées et des paiements opaques. Nous construisons l'infrastructure qui permet à chacun de vérifier les chiffres.",
+    "principlesTitle": "Nos principes",
+    "principles": [
+      {
+        "title": "Aucune donnée inventée",
+        "body": "Les statistiques affichées proviennent de la base de données. Quand une donnée n'existe pas, l'écran le dit au lieu d'afficher un chiffre plausible."
+      },
+      {
+        "title": "Un clic n'est pas une vente",
+        "body": "Le tracking et la facturation sont séparés. Une conversion passe toujours par une étape de validation."
+      },
+      {
+        "title": "La sécurité avant la vitesse",
+        "body": "Isolation des données au niveau de la base, validation côté serveur, aucun numéro de carte stocké."
+      },
+      {
+        "title": "Pensé pour les marchés africains",
+        "body": "Français et anglais, FCFA, moyens de retrait locaux, et une interface qui reste utilisable sur une connexion mobile contrainte."
+      }
+    ],
+    "statusTitle": "État du projet",
+    "statusBody": "AffiliateOS est en cours de développement, par étapes validées une à une : analyse et architecture, conception, base de données, authentification, fonctionnalités principales, intelligence artificielle, paiements, administration, tests, puis déploiement. Cette page évolue au même rythme que le produit.",
+    "contactTitle": "Nous contacter",
+    "contactBody": "Une question sur le produit, un partenariat ou un besoin spécifique ?"
+  },
+  "help": {
+    "title": "Centre d'aide",
+    "subtitle": "Les réponses aux questions les plus fréquentes, classées par thème.",
+    "searchPlaceholder": "Rechercher dans l'aide",
+    "allCategories": "Tout",
+    "noResult": "Aucun résultat pour cette recherche.",
+    "contactTitle": "Vous n'avez pas trouvé ?",
+    "contactBody": "Écrivez-nous, une réponse humaine suit.",
+    "categories": {
+      "account": "Compte",
+      "tracking": "Tracking et liens",
+      "commissions": "Commissions",
+      "payments": "Paiements"
+    },
+    "items": [
+      {
+        "category": "account",
+        "question": "Comment créer un compte ?",
+        "answer": "Rendez-vous sur la page d'inscription, choisissez votre rôle — affilié ou annonceur — puis confirmez votre adresse e-mail via le lien reçu."
+      },
+      {
+        "category": "account",
+        "question": "Puis-je être à la fois affilié et annonceur ?",
+        "answer": "Oui. Les deux rôles correspondent à des espaces distincts, avec des données séparées et des abonnements indépendants."
+      },
+      {
+        "category": "tracking",
+        "question": "Comment obtenir mon lien d'affiliation ?",
+        "answer": "Depuis votre tableau de bord, ouvrez le programme que vous avez rejoint et générez un lien. Vous pouvez en créer plusieurs pour un même produit, chacun avec ses propres paramètres UTM."
+      },
+      {
+        "category": "tracking",
+        "question": "Combien de temps un clic reste-t-il attribuable ?",
+        "answer": "La durée est définie par l'annonceur pour chaque programme, en jours. Elle est indiquée sur la fiche du programme avant votre candidature."
+      },
+      {
+        "category": "tracking",
+        "question": "Pourquoi mes clics ne se transforment-ils pas en ventes ?",
+        "answer": "Un clic n'est jamais compté comme une vente. La conversion doit être déclarée par l'annonceur, par son API ou par un webhook, puis validée."
+      },
+      {
+        "category": "commissions",
+        "question": "Quels sont les statuts d'une commission ?",
+        "answer": "En attente, validée, refusée, disponible, payée, annulée. Une commission devient disponible une fois validée et hors délai de remboursement."
+      },
+      {
+        "category": "commissions",
+        "question": "Que se passe-t-il en cas de remboursement ?",
+        "answer": "La commission correspondante est annulée par une contre-écriture dans le registre comptable. Elle n'est jamais supprimée, ce qui conserve une trace vérifiable."
+      },
+      {
+        "category": "payments",
+        "question": "Quel est le montant minimum de retrait ?",
+        "answer": "Il est défini par programme et par devise. Le seuil applicable est affiché sur votre écran de retrait."
+      },
+      {
+        "category": "payments",
+        "question": "Quels moyens de retrait sont disponibles ?",
+        "answer": "Les moyens activés dépendent de votre pays : Mobile Money, virement bancaire ou prestataire international. Un moyen n'est proposé que s'il est réellement disponible pour votre pays."
+      }
+    ]
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "Une question commerciale, technique ou un partenariat : écrivez-nous.",
+    "emailLabel": "Par e-mail",
+    "responseNote": "Nous répondons généralement sous 48 heures ouvrées.",
+    "formTitle": "Formulaire de contact",
+    "name": "Votre nom",
+    "email": "Votre e-mail",
+    "subject": "Sujet",
+    "subjectOptions": {
+      "sales": "Question commerciale",
+      "support": "Support technique",
+      "partnership": "Partenariat",
+      "other": "Autre"
+    },
+    "message": "Votre message",
+    "submit": "Préparer l'e-mail",
+    "mailNote": "Ce formulaire ouvre votre application de messagerie avec un message prérempli. Aucun envoi automatique n'est effectué depuis cette page : le canal d'envoi sera activé avec la messagerie transactionnelle."
+  },
+  "auth": {
+    "signupTitle": "Créer votre compte",
+    "signupSubtitle": "Choisissez votre rôle : il détermine l'espace qui vous sera proposé.",
+    "loginTitle": "Connexion",
+    "loginSubtitle": "Retrouvez votre tableau de bord AffiliateOS.",
+    "forgotTitle": "Mot de passe oublié",
+    "forgotSubtitle": "Indiquez votre adresse e-mail, nous vous enverrons un lien de réinitialisation.",
+    "roleAffiliate": "Affilié",
+    "roleAffiliateHint": "Je veux promouvoir des produits et suivre mes commissions.",
+    "roleAdvertiser": "Annonceur",
+    "roleAdvertiserHint": "Je veux créer mon programme d'affiliation et recruter des affiliés.",
+    "fullName": "Nom complet",
+    "email": "Adresse e-mail",
+    "password": "Mot de passe",
+    "passwordHint": "8 caractères minimum.",
+    "companyName": "Nom de l'entreprise",
+    "country": "Pays",
+    "submitSignup": "Créer mon compte",
+    "submitLogin": "Se connecter",
+    "submitForgot": "Envoyer le lien",
+    "haveAccount": "Vous avez déjà un compte ?",
+    "noAccount": "Pas encore de compte ?",
+    "forgotLink": "Mot de passe oublié ?",
+    "backToLogin": "Retour à la connexion",
+    "termsAccept": "En créant un compte, vous acceptez les conditions générales et la politique de confidentialité.",
+    "pendingTitle": "Branchement en cours",
+    "pendingBody": "L'authentification est reliée à Supabase Auth à l'étape 4 du développement. Ce formulaire est fonctionnel côté interface — validation des champs incluse — mais ne crée pas encore de compte réel. Aucun faux message de succès ne vous sera affiché."
+  },
+  "legal": {
+    "updatedLabel": "Dernière mise à jour",
+    "reviewNote": "Document de travail. Il doit être relu et adapté par un professionnel du droit avant toute mise en production commerciale.",
+    "termsTitle": "Conditions générales",
+    "privacyTitle": "Politique de confidentialité",
+    "cookiesTitle": "Politique de cookies"
+  }
+}

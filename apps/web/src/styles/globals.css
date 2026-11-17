@@ -1,0 +1,153 @@
+@import "tailwindcss";
+
+/* Thème sombre piloté par une classe (next-themes, attribute="class") */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ------------------------------------------------------------------
+   AffiliateOS — jetons de design
+   Bleu nuit : couleur principale · Violet : intelligence & innovation
+   Blanc : lisibilité · Gris clair : arrière-plans · Vert : indicateurs positifs
+   ------------------------------------------------------------------ */
+@theme {
+  /* Bleu nuit */
+  --color-ink-50: #f4f6fb;
+  --color-ink-100: #e7ebf5;
+  --color-ink-200: #ccd5e8;
+  --color-ink-300: #a3b2d2;
+  --color-ink-400: #7488b4;
+  --color-ink-500: #54679a;
+  --color-ink-600: #415080;
+  --color-ink-700: #364168;
+  --color-ink-800: #1f2740;
+  --color-ink-900: #131a2c;
+  --color-ink-950: #080c17;
+
+  /* Violet — module IA */
+  --color-brand-50: #f5f3ff;
+  --color-brand-100: #ede9fe;
+  --color-brand-200: #ddd6fe;
+  --color-brand-300: #c4b5fd;
+  --color-brand-400: #a78bfa;
+  --color-brand-500: #8b5cf6;
+  --color-brand-600: #7c3aed;
+  --color-brand-700: #6d28d9;
+  --color-brand-800: #5b21b6;
+  --color-brand-900: #4c1d95;
+
+  /* Vert — indicateurs positifs */
+  --color-success-50: #f0fdf4;
+  --color-success-100: #dcfce7;
+  --color-success-400: #4ade80;
+  --color-success-500: #22c55e;
+  --color-success-600: #16a34a;
+  --color-success-700: #15803d;
+
+  /* Ambre — états en attente */
+  --color-warning-50: #fffbeb;
+  --color-warning-500: #f59e0b;
+  --color-warning-600: #d97706;
+
+  /* Rouge — états négatifs */
+  --color-danger-50: #fef2f2;
+  --color-danger-500: #ef4444;
+  --color-danger-600: #dc2626;
+
+  /* Typographie : police système uniquement.
+     Aucune police distante n'est téléchargée (réseau limité, chargement plus
+     rapide, meilleure tenue sur connexion mobile contrainte). */
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
+    "Liberation Mono", monospace;
+
+  --radius-card: 1rem;
+}
+
+/* Jetons sémantiques qui basculent avec le thème */
+@theme inline {
+  --color-surface: var(--surface);
+  --color-surface-muted: var(--surface-muted);
+  --color-surface-raised: var(--surface-raised);
+  --color-line: var(--line);
+  --color-fg: var(--fg);
+  --color-fg-muted: var(--fg-muted);
+}
+
+:root {
+  --surface: #ffffff;
+  --surface-muted: #f6f7f9;
+  --surface-raised: #ffffff;
+  --line: #e4e7ec;
+  --fg: #101828;
+  --fg-muted: #667085;
+  color-scheme: light;
+}
+
+.dark {
+  --surface: #0b1220;
+  --surface-muted: #0f1728;
+  --surface-raised: #131c2e;
+  --line: #232f45;
+  --fg: #f2f5f9;
+  --fg-muted: #98a5b8;
+  color-scheme: dark;
+}
+
+@layer base {
+  * {
+    border-color: var(--line);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--surface-muted);
+    color: var(--fg);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Accessibilité : focus toujours visible, y compris au clavier */
+  :focus-visible {
+    outline: 2px solid var(--color-brand-500);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  /* Respecte la préférence « animations réduites » */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  ::selection {
+    background-color: var(--color-brand-200);
+    color: var(--color-ink-900);
+  }
+}
+
+@layer utilities {
+  /* Zones tactiles >= 44 px, conforme aux exigences Android */
+  .tap-target {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .text-pretty {
+    text-wrap: pretty;
+  }
+}
